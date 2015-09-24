@@ -1,0 +1,20 @@
+{
+  "name": "js-helper",
+  "version": "1.0.1",
+  "homepage": "https://github.com/aminsh/js-helper",
+  "authors": [
+    "Amin sheikhi <aminsheikhi@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "1.9.1",
+    "linqjs": "~3.0.5"
+  }
+}

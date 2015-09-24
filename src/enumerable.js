@@ -19,3 +19,7 @@ function removeAll () {
 
     return this;
 }
+
+function test(){
+
+}
