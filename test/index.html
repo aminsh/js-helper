@@ -10,8 +10,20 @@
 <script>
     debugger;
 
-    var enumerable = [1,2,3].asEnumerable();
+    var enumerable = [1, 2, 3].asEnumerable();
     enumerable.remove(1);
+
+
+    var people = [
+        {fname: 'amin', lname: 'sheikhi'},
+        {fname: 'ali', lname: 'sheikhi'},
+        {fname: 'hassan', lname: 'sheikhi'},
+        {fname: 'kamran', lname: 'sheikhi'}
+    ].asEnumerable()
+            .select(function (p) {
+                return p.fname;
+            }).toArray();
+
     debugger;
 </script>
 </body>
