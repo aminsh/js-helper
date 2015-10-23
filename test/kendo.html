@@ -28,21 +28,29 @@
             'kendo/js/kendo.core': 'kendo/js/kendo.core',
             'kendo/js/grid': 'kendo/js/kendo.grid',
             'kendo-message-fa-IR': 'kendo/js/messages/kendo.messages.fa-IR',
-            'kendo-culture-fa-IR': 'kendo/kendo.culture.fa.IR'
+            'kendo-culture-fa-IR': 'kendo/js/cultures/kendo.culture.fa.IR',
+            'kendo/js/datepicker': 'kendo/js/kendo.datepicker',
+            'JalaliDate': 'kendo/JalaliDate'
         },
         shim: {
-            'kendo/js/kendo.core': {exports: 'kendo/js/kendo.core', deps: ['$']},
+            'JalaliDate': {exports: 'JalaliDate'},
+            'kendo/js/kendo.core': {exports: 'kendo/js/kendo.core', deps: ['$', 'JalaliDate']},
             'kendo/js/grid': {exports: 'grid', deps: ['kendo/js/kendo.core']},
             'kendo-message-fa-IR': {exports: 'kendo-message-fa-IR', deps: ['kendo/js/kendo.core', 'kendo/js/grid']},
-            'kendo-culture-fa-IR': {exports: 'kendo-culture-fa-IR', deps: ['kendo/js/kendo.core', 'kendo/js/grid']}
+            'kendo-culture-fa-IR': {exports: 'kendo-culture-fa-IR', deps: ['kendo/js/kendo.core', /*'kendo/js/grid'*/]},
+            'c': {exports: 'kendo/js/datepicker', deps: ['kendo/js/kendo.core']}
         }
     })
 
-    requirejs(['kendo-culture-fa-IR', 'kendo-message-fa-IR'], function () {
+    requirejs(['kendo-culture-fa-IR', /*'kendo-message-fa-IR', */'kendo/js/datepicker'], function () {
         debugger;
         kendo.culture('fa-IR');
+        $(function () {
+            $('#date').kendoDatePicker();
+        })
 
-        $('#grid').kendoGrid({
+
+        /*$('#grid').kendoGrid({
             dataSource: {
                 data: [
                     {id: 1, name: "test"},
@@ -55,31 +63,15 @@
             filterable: true,
             editable: true,
             toolbar: ['create']
-        })
+         });
+
+         $('#date').kendoDatepicker();*/
     })
-
-
-    /*$(function () {
-     //kendo.culture('fa-IR');
-
-     $('#grid').kendoGrid({
-     dataSource: {
-     data: [
-     {id: 1, name: "test"},
-     {id: 1, name: "test"},
-     {id: 1, name: "test"},
-
-     ]
-     },
-     //language: 'fa-IR',
-     filterable: true,
-     editable: true,
-     toolbar:['create']
-     })
-     })*/
 
 </script>
 <div id="grid"></div>
 <input id="combo"/>
+
+<input id="date" value="1394/01/01">
 </body>
 </html>
