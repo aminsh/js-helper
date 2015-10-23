@@ -20,6 +20,6 @@ function removeAll () {
     return this;
 }
 
-function test(){
-    return 1;
-}
+window.isArray = function (obj) {
+    return Object.prototype.toString.call(obj) === '[object Array]';
+};
