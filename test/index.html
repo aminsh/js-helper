@@ -3,28 +3,43 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
-    <script src="../bower_components/linqjs/linq.js"></script>
-    <script src="../src/enumerable.js"></script>
+    <script src="../bower_components/requirejs/require.js"></script>
+    <!--<script src="../bower_components/linqjs/linq.js"></script>
+    <script src="../src/enumerable.js"></script>-->
 </head>
 <body>
 <script>
     debugger;
+    requirejs.config({
+        baseUrl: '/',
+        urlArgs: 'v=1.0',
+        paths: {
+            'linqjs': '/bower_components/linqjs/linq',
+            'src/index': '/src/index'
+        },
+        shim: {
+            'src/index': {exports: 'src/index', deps: ['linqjs']}
+        }
+    });
 
-    var enumerable = [1, 2, 3].asEnumerable();
-    enumerable.remove(1);
+    requirejs(['src/index'], function () {
+        var enumerable = [1, 2, 3].asEnumerable();
+        enumerable.remove(1);
+        console.log(enumerable.toArray());
 
 
-    var people = [
-        {fname: 'amin', lname: 'sheikhi'},
-        {fname: 'ali', lname: 'sheikhi'},
-        {fname: 'hassan', lname: 'sheikhi'},
-        {fname: 'kamran', lname: 'sheikhi'}
-    ].asEnumerable()
-            .select(function (p) {
-                return p.fname;
-            }).toArray();
+        var people = [
+            {fname: 'amin', lname: 'sheikhi'},
+            {fname: 'ali', lname: 'sheikhi'},
+            {fname: 'hassan', lname: 'sheikhi'},
+            {fname: 'kamran', lname: 'sheikhi'}
+        ].asEnumerable()
+                .select(function (p) {
+                    return p.fname;
+                }).toArray();
 
-    debugger;
+        console.log(people);
+    });
 </script>
 </body>
 </html>
