@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <!--<link rel="stylesheet" href="http://cdn.kendostatic.com/2015.2.624/styles/kendo.common.min.css">-->
+    <link rel="stylesheet" href="../src/kendo/css/kendo.common.min.css">
+    <link rel="stylesheet" href="../src/kendo/css/kendo.material.min.css">
+
+    <script src="../bower_components/requirejs/require.js"></script>
+    <script src="../src/kendo/js/jquery.min.js"></script>
+
+    <!--<script src="http://cdn.kendostatic.com/2014.2.903/js/kendo.core.min.js"></script>
+    <script src="http://cdn.kendostatic.com/2014.2.903/js/kendo.grid.min.js"></script>
+    <script src="../src/kendo/js/messages/kendo.messages.fa-IR.js"></script>
+    <script src="../src/kendo/kendo.culture.fa.IR.js"></script>-->
+    <!--<script src="../src/kendo/js/kendo.grid.js"></script>-->
+</head>
+<body>
+<script>
+
+    requirejs.config({
+        baseUrl: '/src',
+        urlArgs: 'v=1.0',
+        paths: {
+            '$': 'kendo/js/jquery.min',
+            'kendo/js/kendo.core': 'kendo/js/kendo.core',
+            'kendo/js/grid': 'kendo/js/kendo.grid',
+            'kendo-message-fa-IR': 'kendo/js/messages/kendo.messages.fa-IR',
+            'kendo-culture-fa-IR': 'kendo/kendo.culture.fa.IR'
+        },
+        shim: {
+            'kendo/js/kendo.core': {exports: 'kendo/js/kendo.core', deps: ['$']},
+            'kendo/js/grid': {exports: 'grid', deps: ['kendo/js/kendo.core']},
+            'kendo-message-fa-IR': {exports: 'kendo-message-fa-IR', deps: ['kendo/js/kendo.core', 'kendo/js/grid']},
+            'kendo-culture-fa-IR': {exports: 'kendo-culture-fa-IR', deps: ['kendo/js/kendo.core', 'kendo/js/grid']}
+        }
+    })
+
+    requirejs(['kendo-culture-fa-IR', 'kendo-message-fa-IR'], function () {
+        debugger;
+        kendo.culture('fa-IR');
+
+        $('#grid').kendoGrid({
+            dataSource: {
+                data: [
+                    {id: 1, name: "test"},
+                    {id: 1, name: "test"},
+                    {id: 1, name: "test"},
+
+                ]
+            },
+            language: 'fa-IR',
+            filterable: true,
+            editable: true,
+            toolbar: ['create']
+        })
+    })
+
+
+    /*$(function () {
+     //kendo.culture('fa-IR');
+
+     $('#grid').kendoGrid({
+     dataSource: {
+     data: [
+     {id: 1, name: "test"},
+     {id: 1, name: "test"},
+     {id: 1, name: "test"},
+
+     ]
+     },
+     //language: 'fa-IR',
+     filterable: true,
+     editable: true,
+     toolbar:['create']
+     })
+     })*/
+
+</script>
+<div id="grid"></div>
+<input id="combo"/>
+</body>
+</html>
