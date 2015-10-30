@@ -950,6 +950,9 @@
                         month2 = date2.getMonth(),
                         year2 = date2.getFullYear();
 
+                    if (year2 == 1900)
+                        year2 = 1300;
+
                     if (year1 > year2) {
                         result = 1;
                     } else if (year1 < year2) {

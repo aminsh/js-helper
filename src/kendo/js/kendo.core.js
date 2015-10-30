@@ -61,7 +61,7 @@
                     fn[member] = extend(true, {}, base.prototype[member], proto[member]);
                 } else {
                     fn[member] = proto[member];
-                }
+            }
             }
 
             fn.constructor = subclass;
@@ -104,7 +104,7 @@
                 if (handlers === undefined) {
                     for (idx in eventName) {
                         that.bind(idx, eventName[idx]);
-                    }
+                }
                     return that;
                 }
 
@@ -121,10 +121,10 @@
                                 original.apply(that, arguments);
                             };
                             handler.original = original;
-                        }
+                    }
                         events = that._events[eventName] = that._events[eventName] || [];
                         events.push(handler);
-                    }
+                }
                 }
 
                 return that;
@@ -151,7 +151,7 @@
                     if (handler) {
                         events = that._events[eventName] = that._events[eventName] || [];
                         events.unshift(handler);
-                    }
+                }
                 }
 
                 return that;
@@ -178,7 +178,7 @@
 
                     for (idx = 0, length = events.length; idx < length; idx++) {
                         events[idx].call(that, e);
-                    }
+                }
 
                     return e._defaultPrevented === true;
                 }
@@ -198,12 +198,12 @@
                         for (idx = events.length - 1; idx >= 0; idx--) {
                             if (events[idx] === handler || events[idx].original === handler) {
                                 events.splice(idx, 1);
-                            }
                         }
+                    }
                     } else {
                         that._events[eventName] = [];
-                    }
                 }
+            }
 
                 return that;
             }
@@ -295,7 +295,7 @@
                     return fn;
                 } catch (e) {
                     throw new Error(kendo.format("Invalid template:'{0}' Generated code:'{1}'", template, functionBody));
-                }
+            }
             }
         };
 
@@ -407,8 +407,8 @@
                                 v = str(k, value);
                                 if (v) {
                                     partial.push(quote(k) + (gap ? ": " : ":") + v);
-                                }
-                            }
+                        }
+                    }
                         }
                     } else {
                         for (k in value) {
@@ -416,10 +416,10 @@
                                 v = str(k, value);
                                 if (v) {
                                     partial.push(quote(k) + (gap ? ": " : ":") + v);
-                                }
-                            }
                         }
                     }
+                }
+            }
 
                     v = partial.length === 0 ? "{}" : gap ?
                     "{\n" + gap + partial.join(",\n" + gap) + "\n" + mind + "}" :
@@ -447,7 +447,7 @@
                     rep = replacer;
                     if (replacer && typeof replacer !== FUNCTION && (typeof replacer !== OBJECT || typeof replacer.length !== NUMBER)) {
                         throw new Error("JSON.stringify");
-                    }
+            }
 
                     return str("", {"": value});
                 };
@@ -503,7 +503,7 @@
                             names: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
                             namesAbbr: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
                             namesShort: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]
-                        },
+                },
                         months: {
                             names: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
                             namesAbbr: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
@@ -543,7 +543,7 @@
                     if (typeof culture === STRING) {
                         var cultures = kendo.cultures;
                         return cultures[culture] || cultures[culture.split("-")[0]] || null;
-                    }
+            }
 
                     return null;
                 }
@@ -665,7 +665,7 @@
 
                         result = math.abs(result).toString().split(".")[0];
                         result = (sign ? "+" : "-") + (match === "zz" ? pad(result) : result);
-                    }
+            }
 
                     return result !== undefined ? result : match.slice(1, match.length - 1);
                 });
@@ -779,7 +779,7 @@
                         for (idx = 0; idx < integerLength; idx++) {
                             if (idx > 0 && (integerLength - idx) % groupSize === 0) {
                                 value += groupSeparator;
-                            }
+                    }
                             value += integer.charAt(idx);
                         }
                     }
@@ -803,7 +803,7 @@
                             number += symbol;
                         } else {
                             number += ch;
-                        }
+                }
                     }
 
                     return number;
@@ -906,7 +906,7 @@
                             idx = sharpIndex;
                         } else if (hasZero && idx < zeroIndex) {
                             idx = zeroIndex;
-                        }
+                }
                     }
 
                     if (idx > -1) {
@@ -965,9 +965,9 @@
                             for (idx = 0; idx < integerLength; idx++) {
                                 if (idx > 0 && (integerLength - idx) % groupSize === 0) {
                                     value += groupSeparator;
-                                }
+                        }
                                 value += integer.charAt(idx);
-                            }
+                    }
 
                             integer = value;
                         }
@@ -986,23 +986,23 @@
                             if (end - idx < integerLength) {
                                 number += integer;
                                 break;
-                            }
+                    }
                         } else {
                             if (zeroIndex != -1 && zeroIndex < idx) {
                                 replacement = EMPTY;
-                            }
+                    }
 
                             if ((decimalIndex - idx) <= integerLength && decimalIndex - idx > -1) {
                                 number += integer;
                                 idx = decimalIndex;
-                            }
+                    }
 
                             if (decimalIndex === idx) {
                                 number += (fraction ? decimal : EMPTY) + fraction;
                                 idx += end - decimalIndex + 1;
                                 continue;
-                            }
-                        }
+                    }
+                }
 
                         if (ch === ZERO) {
                             number += ch;
@@ -1010,7 +1010,7 @@
                         } else if (ch === SHARP) {
                             number += replacement;
                         }
-                    }
+            }
 
                     if (end >= start) {
                         number += format.substring(end + 1);
@@ -1031,7 +1031,7 @@
                     if (length) {
                         for (idx = 0; idx < length; idx++) {
                             number = number.replace(PLACEHOLDER, literals[idx]);
-                        }
+                }
                     }
                 }
 
@@ -1169,7 +1169,7 @@
                         while (format[idx] === match) {
                             i++;
                             idx++;
-                        }
+                }
                         if (i > 0) {
                             idx -= 1;
                         }
@@ -1183,7 +1183,7 @@
                             match = match[0];
                             valueIdx += match.length;
                             return parseInt(match, 10);
-                        }
+                }
                         return null;
                     },
                     getIndexByName = function (names, lower) {
@@ -1309,7 +1309,7 @@
                                 year = (defaultYear - defaultYear % 100) + year;
                                 if (year > twoDigitYearMax) {
                                     year -= 100;
-                                }
+                        }
                             }
                         } else if (ch === "h") {
                             lookAhead("h");
@@ -1373,8 +1373,8 @@
                             pmHour = getIndexByName(pmDesignators);
                             if (!pmHour && !getIndexByName(amDesignators)) {
                                 return null;
-                            }
-                        }
+                    }
+                }
                         else if (ch === "z") {
                             UTC = true;
                             count = lookAhead("z");
@@ -1382,14 +1382,14 @@
                             if (value.substr(valueIdx, 1) === "Z") {
                                 checkLiteral();
                                 continue;
-                            }
+                    }
 
                             matches = value.substr(valueIdx, 6)
                                 .match(count > 2 ? longTimeZoneRegExp : shortTimeZoneRegExp);
 
                             if (!matches) {
                                 return null;
-                            }
+                    }
 
                             matches = matches[0].split(":");
 
@@ -1400,12 +1400,12 @@
                                 valueIdx = hoursOffset.length - 2;
                                 minutesOffset = hoursOffset.substring(valueIdx);
                                 hoursOffset = hoursOffset.substring(0, valueIdx);
-                            }
+                    }
 
                             hoursOffset = parseInt(hoursOffset, 10);
                             if (outOfRange(hoursOffset, -12, 13)) {
                                 return null;
-                            }
+                    }
 
                             if (count > 2) {
                                 minutesOffset = parseInt(minutesOffset, 10);
@@ -1418,7 +1418,7 @@
                             checkLiteral();
                         } else if (!checkLiteral()) {
                             return null;
-                        }
+                }
                     }
                 }
 
@@ -1435,7 +1435,7 @@
 
                     if (day === null) {
                         day = 1;
-                    }
+            }
                 }
 
                 if (pmHour && hours < 12) {
@@ -1449,7 +1449,7 @@
 
                     if (minutesOffset) {
                         minutes += -minutesOffset;
-                    }
+            }
 
                     value = new Date(Date.UTC(year, month, day, hours, minutes, seconds, milliseconds));
                 } else {
@@ -1482,10 +1482,6 @@
                     return value;
                 }
 
-                if (value !== null && value !== "") {
-                    return JalaliDate.parse(value);
-                }
-
                 var idx = 0;
                 var date = null;
                 var length, patterns;
@@ -1503,7 +1499,7 @@
                             tzoffset = parseMicrosoftFormatOffset(tzoffset[0]);
                             date = kendo.timezone.apply(date, 0);
                             date = kendo.timezone.convert(date, 0, -1 * tzoffset);
-                        }
+                }
 
                         return date;
                     }
@@ -1638,7 +1634,7 @@
                 kendo.parseDate = function (value, format, culture) {
                     if (objectToString.call(value) === "[object Date]") {
                         return value;
-                    }
+            }
 
                     return globalize.parseDate(value, format, culture);
                 };
@@ -1720,14 +1716,14 @@
                         mozBoxSizing: "border-box",
                         webkitBoxSizing: "border-box"
                     });
-                }
+            }
             } else {
                 var wrapper = element.parent(".k-animation-container"),
                     wrapperStyle = wrapper[0].style;
 
                 if (wrapper.is(":hidden")) {
                     wrapper.show();
-                }
+            }
 
                 percentage = percentRegExp.test(wrapperStyle.width) || percentRegExp.test(wrapperStyle.height);
 
@@ -1740,7 +1736,7 @@
                         webkitBoxSizing: "content-box"
                     });
                 }
-            }
+        }
 
             if (browser.msie && math.floor(browser.version) <= 7) {
                 element.css({zoom: 1});
@@ -1756,7 +1752,7 @@
 
             for (i = 1; i < length; i++) {
                 deepExtendOne(destination, arguments[i]);
-            }
+        }
 
             return destination;
         }
@@ -1794,15 +1790,15 @@
                         destProp = destination[property];
                         if (typeof (destProp) === OBJECT) {
                             destination[property] = destProp || {};
-                        } else {
+                    } else {
                             destination[property] = {};
-                        }
-                        deepExtendOne(destination[property], propValue);
                     }
+                        deepExtendOne(destination[property], propValue);
+                }
                 } else if (propType !== UNDEFINED) {
                     destination[property] = propValue;
-                }
             }
+        }
 
             return destination;
         }
@@ -1811,8 +1807,8 @@
             for (var rx in rxs) {
                 if (rxs.hasOwnProperty(rx) && rxs[rx].test(agent)) {
                     return rx;
-                }
             }
+        }
             return dflt !== undefined ? dflt : agent;
         }
 
@@ -1838,7 +1834,7 @@
                     $.each(properties, function (idx, value) {
                         styles[value] = computedStyle.getPropertyValue(value);
                     });
-                }
+            }
             } else {
                 computedStyle = element.currentStyle;
 
@@ -1846,12 +1842,12 @@
                     $.each(properties, function (idx, value) {
                         styles[value] = computedStyle[toCamelCase(value)];
                     });
-                }
+            }
             }
 
             if (!kendo.size(styles)) {
                 styles = computedStyle;
-            }
+        }
 
             return styles;
         }
@@ -1859,39 +1855,33 @@
         function isScrollable(element) {
             if (element.className.indexOf("k-auto-scrollable") > -1) {
                 return true;
-            }
+        }
 
             var overflow = getComputedStyles(element, ["overflow"]).overflow;
             return overflow == "auto" || overflow == "scroll";
         }
 
         function scrollLeft(element, value) {
+            var el = element instanceof $ ? element[0] : element;
+            var isRtl = support.isRtl(element);
             var webkit = support.browser.webkit;
             var mozila = support.browser.mozilla;
-            var el = element instanceof $ ? element[0] : element;
-            var isRtl;
-
-            if (!element) {
-                return;
-            }
-
-            isRtl = support.isRtl(element);
 
             if (value !== undefined) {
                 if (isRtl && webkit) {
                     el.scrollLeft = el.scrollWidth - el.clientWidth - value;
                 } else if (isRtl && mozila) {
                     el.scrollLeft = -value;
-                } else {
+            } else {
                     el.scrollLeft = value;
-                }
+            }
             } else {
                 if (isRtl && webkit) {
                     return el.scrollWidth - el.clientWidth - el.scrollLeft;
                 } else {
                     return Math.abs(el.scrollLeft);
                 }
-            }
+        }
         }
 
         (function () {
@@ -1957,7 +1947,7 @@
                     if (hasTransitions) {
                         transitions = transforms;
                         transitions.event = transitions.event ? transitions.event + "TransitionEnd" : "transitionend";
-                    }
+                }
 
                     return false;
                 }
@@ -2042,12 +2032,12 @@
 
                             if (os.android && (support.devicePixelRatio < 1.5 && os.flatVersion < 400 || notAndroidPhone) && (support.screenWidth > 800 || support.screenHeight > 800)) {
                                 os.tablet = agent;
-                            }
+                        }
 
                             break;
-                        }
                     }
                 }
+            }
                 return os;
             };
 
@@ -2061,35 +2051,6 @@
             if (mobileOS.ios || (mobileOS.android && mobileOS.majorVersion > 2) || mobileOS.wp) {
                 support.hasNativeScrolling = mobileOS;
             }
-
-            support.delayedClick = function () {
-
-                // only the mobile devices with touch events do this.
-                if (support.touch) {
-                    // All iOS devices so far (by the time I am writing this, iOS 9.0.2 is the latest),
-                    // delay their click events.
-                    if (mobileOS.ios) {
-                        return true;
-                    }
-
-                    if (mobileOS.android) {
-
-                        if (!support.browser.chrome) { // older webkits and webviews delay the click
-                            return true;
-                        }
-
-                        // from here on, we deal with Chrome on Android.
-                        if (support.browser.version < 32) {
-                            return false;
-                        }
-
-                        // Chrome 32+ does conditional fast clicks if the view port is not user scalable.
-                        return !($("meta[name=viewport]").attr("content") || "").match(/user-scalable=no/i);
-                    }
-                }
-
-                return false;
-            };
 
             support.mouseAndTouchPresent = support.touch && !(support.mobileOS.ios || support.mobileOS.android);
 
@@ -2114,8 +2075,8 @@
                             browser.version = parseInt(document.documentMode || match[2], 10);
 
                             break;
-                        }
                     }
+                }
                 }
 
                 return browser;
@@ -2131,7 +2092,7 @@
 
                     if (browser.msie && browser.version == 11 && docEl.scrollHeight > docEl.clientHeight && !support.touch) {
                         ie11WidthCorrection = support.scrollbar();
-                    }
+                }
 
                     return support.touch ? (docEl.clientWidth / window.innerWidth) :
                         browser.msie && browser.version >= 10 ? (((top || window).document.documentElement.offsetWidth + ie11WidthCorrection) / (top || window).innerWidth) : 1;
@@ -2218,7 +2179,7 @@
                     sorted.push({
                         index: i,
                         field: "a"
-                    });
+                });
                 }
 
                 sorted.sort(function (a, b) {
@@ -2260,7 +2221,7 @@
                 if (obj.hasOwnProperty(key) && key != "toJSON") { // Ignore fake IE7 toJSON.
                     result++;
                 }
-            }
+        }
 
             return result;
         }
@@ -2268,7 +2229,7 @@
         function getOffset(element, type, positioned) {
             if (!type) {
                 type = "offset";
-            }
+        }
 
             var result = element[type]();
 
@@ -2276,7 +2237,7 @@
             if (support.browser.msie && (support.pointers || support.msPointers) && !positioned) {
                 result.top -= (window.pageYOffset - document.documentElement.scrollTop);
                 result.left -= (window.pageXOffset - document.documentElement.scrollLeft);
-            }
+        }
 
             return result;
         }
@@ -2293,7 +2254,7 @@
         };
 
         function parseEffects(input) {
-            var effects = {};
+        var effects = {};
 
             each((typeof input === "string" ? input.split(" ") : input), function (idx) {
                 effects[idx] = this;
@@ -2325,7 +2286,7 @@
 
                 if (options.init) {
                     options.init();
-                }
+            }
 
                 if (options.completeCallback) {
                     options.completeCallback(element); // call the external complete callback with the element
@@ -2356,7 +2317,7 @@
                     complete = duration;
                     duration = 400;
                     reverse = false;
-                }
+            }
 
                 if (isFunction(reverse)) {
                     complete = reverse;
@@ -2374,7 +2335,7 @@
                     reverse: reverse,
                     complete: complete
                 };
-            }
+        }
 
             return extend({
                 //default options
@@ -2398,7 +2359,7 @@
                 instance.queue(function () {
                     effects.promise(instance, prepareAnimationOptions(options, duration, reverse, complete));
                 });
-            }
+        }
 
             return element;
         }
@@ -2410,7 +2371,7 @@
                 each(classes, function (idx, value) {
                     element.toggleClass(value, add);
                 });
-            }
+        }
 
             return element;
         }
@@ -2463,7 +2424,7 @@
             each(["swipe", "swipeLeft", "swipeRight", "swipeUp", "swipeDown", "doubleTap", "tap"], function (m, value) {
                 $.fn[value] = function (callback) {
                     return this.bind(value, callback);
-                };
+            };
             });
         }
 
@@ -2473,8 +2434,8 @@
                 support.mouseup = "mouseup touchend";
                 support.mousemove = "mousemove touchmove";
                 support.mousecancel = "mouseleave touchcancel";
-                support.click = "click";
-                support.resize = "resize";
+            support.click = "click";
+            support.resize = "resize";
             } else {
                 support.mousedown = "touchstart";
                 support.mouseup = "touchend";
@@ -2482,7 +2443,7 @@
                 support.mousecancel = "touchcancel";
                 support.click = "touchend";
                 support.resize = "orientationchange";
-            }
+        }
         } else if (support.pointers) {
             support.mousemove = "pointermove";
             support.mousedown = "pointerdown";
@@ -2523,10 +2484,10 @@
                             if (index == -1) {
                                 member = "." + member;
                             } else {
-                                count++;
+                        count++;
                                 member = "." + member.substring(0, index) + " || {})" + member.substring(index);
-                            }
-                        }
+                    }
+                }
 
                         count++;
                         result += member + ((idx < length - 1) ? " || {})" : ")");
@@ -2545,7 +2506,6 @@
             mobile: kendo.mobile || {},
             data: kendo.data || {},
             dataviz: kendo.dataviz || {},
-            drawing: kendo.drawing || {},
             spreadsheet: {},
             keys: {
                 INSERT: 45,
@@ -2652,7 +2612,7 @@
 
                     if (i == 8 || i == 12 || i == 16 || i == 20) {
                         id += "-";
-                    }
+                }
                     id += (i == 12 ? 4 : (i == 16 ? (random & 3 | 8) : random)).toString(16);
                 }
 
@@ -2670,8 +2630,8 @@
                     for (var i = 0; i < selectors.length; i++) {
                         if (selectors[i] != "view") {
                             selectors[i] = selectors[i].replace(/(\w*)(view|bar|strip|over)$/, "$1-$2");
-                        }
                     }
+                }
                 }
 
                 return selectors.join(" ").replace(/(\S+)/g, "kendo-mobile-$1,").slice(0, -1);
@@ -2694,7 +2654,7 @@
 
                 if (!kendo.suppressLog && typeof(console) != "undefined" && console.log) {
                     console.log(message);
-                }
+            }
             }
         });
 
@@ -2767,7 +2727,7 @@
                     e = that.events[idx];
                     if (that.options[e] && options[e]) {
                         that.unbind(e, that.options[e]);
-                    }
+                }
                 }
 
                 that.bind(that.events, options);
@@ -2880,7 +2840,7 @@
                 value = parseFloat(value);
             } else if (jsonRegExp.test(value) && !jsonFormatRegExp.test(value)) {
                 value = new Function("return (" + value + ")")();
-            }
+        }
 
             return value;
         }
@@ -2897,11 +2857,11 @@
 
                     if (templateRegExp.test(option)) {
                         value = kendo.template($("#" + value).html());
-                    }
+                }
 
                     result[option] = value;
                 }
-            }
+        }
 
             return result;
         }
@@ -2961,8 +2921,8 @@
                         result = data[key];
                     } else {
                         return data[key];
-                    }
                 }
+            }
             }
 
             if (!widget) {
@@ -2978,7 +2938,7 @@
                     options.dataSource = kendo.getter(dataSource)(window);
                 } else {
                     options.dataSource = dataSource;
-                }
+            }
             }
 
             for (idx = 0, length = widget.fn.events.length; idx < length; idx++) {
@@ -2988,7 +2948,7 @@
 
                 if (value !== undefined) {
                     options[option] = kendo.getter(value)(window);
-                }
+            }
             }
 
             if (!result) {
@@ -3031,7 +2991,7 @@
                 for (var key in data) {
                     if (key.indexOf("kendo") === 0 && typeof data[key].destroy === FUNCTION) {
                         data[key].destroy();
-                    }
+                }
                 }
             });
         };
@@ -3050,7 +3010,7 @@
 
             if (!widgets.length) {
                 return;
-            }
+        }
 
             // sort widgets based on their parent-child relation
             var widgetsArray = $.makeArray(widgets);
@@ -3061,7 +3021,7 @@
                 var widget = kendo.widgetInstance($(this));
                 if (widget) {
                     widget.resize(force);
-                }
+            }
             });
         };
 
@@ -3089,7 +3049,7 @@
                             .css("top", container.scrollTop())
                             .css(leftRight, Math.abs(containerScrollLeft) + webkitCorrection)
                             .prependTo(container);
-                    }
+                }
                 } else if (mask) {
                     mask.remove();
                 }
@@ -3219,7 +3179,7 @@
                 roles: {},
                 plugin: function (widget) {
                     kendo.ui.plugin(widget, kendo.mobile.ui, "Mobile");
-                }
+            }
             }
         });
 
@@ -3233,7 +3193,7 @@
                 views: [],
                 plugin: function (widget) {
                     kendo.ui.plugin(widget, kendo.dataviz.ui);
-                }
+            }
             },
             roles: {}
         });
@@ -3275,10 +3235,10 @@
                     if (suites[0]) {
                         for (i = 0, length = suites.length; i < length; i++) {
                             widgets.push(suites[i].roles[role]);
-                        }
+                    }
                     } else {
                         widgets.push(suites.roles[role]);
-                    }
+                }
                 }
                 else {
                     widgets = [kendo.ui.roles[role], kendo.dataviz.ui.roles[role], kendo.mobile.ui.roles[role]];
@@ -3294,9 +3254,9 @@
                         var instance = element.data("kendo" + widget.fn.options.prefix + widget.fn.options.name);
                         if (instance) {
                             return instance;
-                        }
                     }
                 }
+            }
             }
         };
 
@@ -3352,7 +3312,7 @@
             kendoFocusable: function (element) {
                 var idx = $.attr(element, "tabindex");
                 return focusable(element, !isNaN(idx) && idx > -1);
-            }
+        }
         });
 
         var MOUSE_EVENTS = ["mousedown", "mousemove", "mouseenter", "mouseleave", "mouseover", "mouseout", "mouseup", "click"];
@@ -3378,12 +3338,12 @@
                         if (e.type === "click") {
                             if (MouseEventNormalizer.bustClick && !$(e.target).is(EXCLUDE_BUST_CLICK_SELECTOR)) {
                                 e.preventDefault();
-                                e.stopPropagation();
-                            }
-                        } else {
                             e.stopPropagation();
                         }
+                        } else {
+                            e.stopPropagation();
                     }
+                }
                 };
 
                 for (; idx < length; idx++) {
@@ -3395,7 +3355,7 @@
                 MouseEventNormalizer.captureMouse = true;
                 if (e.data.bustClick) {
                     MouseEventNormalizer.bustClick = true;
-                }
+            }
                 clearTimeout(MouseEventNormalizer.mouseTrapTimeoutID);
             },
 
@@ -3421,7 +3381,7 @@
                 move: "touchmove",
                 up: "touchend touchcancel",
                 cancel: "touchcancel"
-            };
+        };
         } else if (support.pointers) {
             eventMap = {
                 down: "pointerdown",
@@ -3463,7 +3423,7 @@
                         }
                         return ret;
                     }
-                };
+            };
             });
         }
 
@@ -3478,7 +3438,7 @@
 
             if (ns) {
                 events = events.replace(eventRegEx, "$1." + ns);
-            }
+        }
 
             return events;
         };
@@ -3498,7 +3458,7 @@
         kendoJQuery.fn.init = function (selector, context) {
             if (context && context instanceof $ && !(context instanceof kendoJQuery)) {
                 context = kendoJQuery(context);
-            }
+        }
 
             return $.fn.init.call(this, selector, context, rootjQuery);
         };
@@ -3613,7 +3573,7 @@
 
                 if (!cache) {
                     rule[8] = cache = {};
-                }
+            }
 
                 if (cache[year]) {
                     return cache[year];
@@ -3649,10 +3609,10 @@
 
                     if (time.length > 1) {
                         offset = time[0] * 60 + Number(time[1]);
-                    }
+                }
 
                     return [-1000000, 'max', '-', 'Jan', 1, [0, 0, 0], offset, '-'];
-                }
+            }
 
                 var year = new Date(utcTime).getUTCFullYear();
 
@@ -3668,7 +3628,7 @@
                 rules.sort(function (a, b) {
                     if (typeof a != "number") {
                         a = Number(ruleToDate(year, a));
-                    }
+                }
 
                     if (typeof b != "number") {
                         b = Number(ruleToDate(year, b));
@@ -3691,14 +3651,14 @@
 
                 if (!zoneRules) {
                     throw new Error('Timezone "' + timezone + '" is either incorrect, or kendo.timezones.min.js is not included.');
-                }
+            }
 
                 for (var idx = zoneRules.length - 1; idx >= 0; idx--) {
                     var until = zoneRules[idx][3];
 
                     if (until && utcTime > until) {
                         break;
-                    }
+                }
                 }
 
                 var zone = zoneRules[idx + 1];
@@ -3715,7 +3675,7 @@
                     utcTime = Date.UTC(utcTime.getFullYear(), utcTime.getMonth(),
                         utcTime.getDate(), utcTime.getHours(), utcTime.getMinutes(),
                         utcTime.getSeconds(), utcTime.getMilliseconds());
-                }
+            }
 
                 var zone = findZone(utcTime, zones, timezone);
 
@@ -3728,7 +3688,7 @@
             function offset(utcTime, timezone) {
                 if (timezone == "Etc/UTC" || timezone == "Etc/GMT") {
                     return 0;
-                }
+            }
 
                 var info = zoneAndRule(utcTime, this.zones, this.rules, timezone);
                 var zone = info.zone;
@@ -3756,7 +3716,7 @@
             function convert(date, fromOffset, toOffset) {
                 if (typeof fromOffset == STRING) {
                     fromOffset = this.offset(date, fromOffset);
-                }
+            }
 
                 if (typeof toOffset == STRING) {
                     toOffset = this.offset(date, toOffset);
@@ -3803,7 +3763,7 @@
                 if (hours === 0 && date.getHours() === 23) {
                     date.setHours(date.getHours() + 2);
                     return true;
-                }
+            }
 
                 return false;
             }
@@ -3839,7 +3799,7 @@
 
                 if (timeOffset) {
                     last.setHours(first.getHours() + (timeOffset / 60));
-                }
+            }
 
                 return last;
             }
@@ -3867,11 +3827,11 @@
 
                 if (!value || msMin == msMax) {
                     return true;
-                }
+            }
 
                 if (min >= max) {
                     max += MS_PER_DAY;
-                }
+            }
 
                 msValue = getMilliseconds(value);
 
@@ -3893,7 +3853,7 @@
 
                 if (msMin >= msMax) {
                     msMax += MS_PER_DAY;
-                }
+            }
 
                 msValue = value.getTime();
 
@@ -3918,7 +3878,7 @@
                 if (!ignoreDST) {
                     difference = date.getTimezoneOffset() - offset;
                     date.setTime(date.getTime() + difference * MS_PER_MINUTE);
-                }
+            }
             }
 
             function today() {
@@ -3934,7 +3894,7 @@
 
                 if (date) {
                     staticDate.setHours(date.getHours(), date.getMinutes(), date.getSeconds(), date.getMilliseconds());
-                }
+            }
 
                 return staticDate;
             }
@@ -3978,7 +3938,7 @@
                 while (iterator.nextNode()) {
                     if (iterator.referenceNode && !iterator.referenceNode.textContent.trim()) {
                         iterator.referenceNode.parentNode.removeChild(iterator.referenceNode);
-                    }
+                }
                 }
             } else { // IE7/8 support
                 for (var i = 0; i < element.childNodes.length; i++) {
@@ -3991,8 +3951,8 @@
 
                     if (child.nodeType == 1) {
                         kendo.stripWhitespace(child);
-                    }
                 }
+            }
             }
         };
 
@@ -4022,9 +3982,9 @@
             kendo.animationFrame(function () {
                 if (animationQueue[0]) {
                     animationQueue.shift()();
-                    if (animationQueue[0]) {
-                        kendo.runNextAnimation();
-                    }
+                if (animationQueue[0]) {
+                    kendo.runNextAnimation();
+                }
                 }
             });
         };
@@ -4039,7 +3999,7 @@
             for (; idx < length; idx += 2) {
                 if (paramParts[idx] !== "") {
                     params[decodeURIComponent(paramParts[idx])] = decodeURIComponent(paramParts[idx + 1]);
-                }
+            }
             }
 
             return params;
@@ -4091,7 +4051,7 @@
                 }
 
                 if (timeout) {
-                    clearTimeout(timeout);
+                clearTimeout(timeout);
                 }
 
                 if (elapsed > delay) {
@@ -4099,7 +4059,7 @@
                 } else {
                     timeout = setTimeout(exec, delay - elapsed);
                 }
-            };
+        };
 
             throttled.cancel = function () {
                 clearTimeout(timeout);
@@ -4155,8 +4115,8 @@
                         selectionEnd = selectionStart + rangeElement.text.length;
 
                         start = [selectionStart, selectionEnd];
-                    }
                 }
+            }
             } catch (e) {
                 /* element is not focused or it is not in the DOM */
                 start = [];
@@ -4208,7 +4168,7 @@
                     widget.focus();
                 } else {
                     el.focus();
-                }
+            }
             }
 
             lastElement.on("keydown", function (e) {
@@ -4233,7 +4193,7 @@
                     action: proxyURL,
                     method: "POST",
                     target: proxyTarget
-                });
+            });
 
                 var data = kendo.antiForgeryTokens();
                 data.fileName = fileName;
@@ -4249,8 +4209,8 @@
                             name: name,
                             type: "hidden"
                         }).appendTo(form);
-                    }
                 }
+            }
 
                 form.appendTo("body").submit().remove();
             }
@@ -4271,7 +4231,7 @@
                         array[idx] = base64.charCodeAt(idx);
                     }
                     blob = new Blob([array.buffer], {type: contentType});
-                }
+            }
 
                 navigator.msSaveBlob(blob, fileName);
             }
@@ -4299,7 +4259,7 @@
                         save = saveAsDataURI;
                     } else if (navigator.msSaveBlob) {
                         save = saveAsBlob;
-                    }
+                }
                 }
 
                 save(options.dataURI, options.fileName, options.proxyURL, options.proxyTarget);
