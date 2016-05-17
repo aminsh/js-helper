@@ -8,4 +8,11 @@ gulp.task('concat', function () {
         .pipe(gulp.dest('./dist/'))
 });
 
-gulp.task('default', ['concat']);
+gulp.task('concatAndUglify', function () {
+    gulp.src('src/*.js')
+        .pipe(concat('jshelper.bundle.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('./dist/'))
+});
+
+gulp.task('default', ['concat', 'concatAndUglify']);
